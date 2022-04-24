@@ -1,0 +1,176 @@
+.div-block{
+    display:-ms-grid;
+    display:grid;
+    grid-auto-columns:1fr;
+    grid-column-gap:0px;
+    grid-row-gap:16px;
+    -ms-grid-columns:1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
+    text-decoration:none;
+    -o-object-fit:fill;
+    object-fit:fill;
+}
+.link{
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-align: center;
+    -ms-flex-align:center;
+    align-items:center;
+    font-family:'Gt america', sans-serif;
+    color:#000;
+    font-size:20px;
+    font-weight:700;
+    text-decoration:none;
+    cursor:pointer;
+}
+.link.label{
+    color:#6879ff;
+    font-size:16px;
+    font-weight:400;
+
+}
+.link-block{
+    text-decoration:none;
+
+}
+.section.nav{
+    box-shadow:0 0 4px 0 rgba(0,0,0,0.2);
+    opacity:1;
+}
+.container{
+    display:-webkit-box;
+    display: -webkit-flex;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-orient:vertical;
+    -webkit-box-direction:normal;
+    -webkit-flex-direcion:column;
+    -ms-flex-direction:column;
+    flex-direction: column;
+    -webkit-box-align:center;
+    -webkit-align-items: center;
+    -ms-flex-align:center;
+    align-items: center;
+    text-align:left;
+
+
+
+}
+.image{
+    display:block;
+    width:80%;
+}
+.text-block-2{
+    width:80%;
+    font-family:'Gt america', sans-serif;
+    font-size: 20px;
+    font-weight:700;
+}
+.text-block-2.label { color: #888; 
+    font-size: 16px; 
+    font-weight: 400; } 
+.text-block-2.label.label2 { 
+    display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; 
+display: flex; margin-top: -lpx; -webkit-box-orient: horizontal; -webkit-box-direction: normal;
+-webkit-flex-direction: row; 
+-ms-flex-direction: row; 
+flex-direction: row;
+ -webkit-box-align: center;
+ -webkit-align-items:center;
+align-items:center;
+color:#000;
+}
+.container-2
+{
+    display: -webkit-box;
+    display:-webkit-flex;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-orient:vertical;
+    -webkit-box-direction:normal;
+    -webkit-flex-direcion:column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align:center;
+    -webkit-align-items:center;
+    -ms-flex-align:center;
+    align-items:center;
+}
+.div-block-2{
+display:-ms-grid;
+display:grid;
+width:80;
+margin-top:23px;
+-webkit-box-align:stretch;
+-webkit-align-items:stretch;
+-ms-flex-align:stretch;
+align-items:stretch;
+grid-auto-columns:1fr;
+grid-column-gap:16px;
+grid-row-gap:16px;
+-ms-grid-columns:1.75fr 1fr;
+grid-template-columns:1.75fr 1fr;
+-ms-grid-rows:auto;
+
+}
+.container-3{
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction:column;
+    -ms-flex-direcion:column;
+    flex-direction:column;
+    -webkit-box-align:center;
+    -webkit-align-items:center;
+    -ms-flex-align:center;
+    align-items:center;
+    
+}
+#w-node-_21fd61cc-2820-3d9d-4e04-9661b9cadd71-cb776680
+{
+    -ms-grid-column-align:auto;
+    justify-self:auto;
+    -webkit-align-self:center;
+    -ms-grid-row-align:center;
+    align-self:center;
+}
+#w-node-_0fed2ca8-244e-99fd-b9a6-f6f3c9c2f0b4-cb776680
+{
+    -ms-grid-column: span 1;
+    grid-column-start: span 1; 
+    -ms-grid-column-span: 1; 
+    grid-column-end: span 1; 
+    -ms-grid-row: span 1; 
+    grid-row-start: span 1; 
+    -ms-grid-row-span: 1;
+    grid-row-end: span 1;
+
+
+}
+
+@font-face { 
+    font-family: 'Gt america'; 
+    src: url('../fonts/GT-America-Bold-Italic.otf') format('opentype');
+    font-weight: 700;
+    font-style:italic;
+    font-display:swap;}
+    @font-face { 
+        font-family: 'Gt america'; 
+        src: url('../fonts/GT-America-Regular.otf') format('opentype');
+        font-weight: 400;
+        font-style:normal;
+        font-display:swap;}
+        @font-face { 
+            font-family: 'Gt america'; 
+            src: url('../fonts/GT-America-Regular.otf') format('opentype');
+            font-weight: 700;
+            font-style:normal;
+            font-display:swap;}
+            

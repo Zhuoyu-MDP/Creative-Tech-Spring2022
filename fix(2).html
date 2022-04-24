@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data fetching machine!</title>
+    <style>
+        img {
+            max-width: 300px;
+        }
+        
+    </style>
+     <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+   <div class="section nav wf-section">
+       <div class="w-container">
+<a href="https://twitter.com/search?q=Donald%20J.%20Trump&src=typed_query&f=user" class="link-block w-inline-block">
+       <div class="div-block"><img src="WechatIMG1429.png" loading="lazy" alt=" ">
+        <div id="w-node-_21fd61cc-2820-3d9d-4e04-9661b9cadd71-cb776680" class="link">Tronald J.Dump</div>
+       </div>
+</a>
+</div>
+   </div>
+   <div class="wf-section">
+       <div class="container w-container"><img src="WechatIMG1430.png" loading="lazy" size="(max-width:767px) 80vw,(max-width:991px) 582.3984375px,752px"srcset="WechatIMG1430-p-500.png 500w, WechatIMG1430-p-800.png 800w,WechatIMG1430-p-1080.png 1080w,WechatIMG1430.png 1190w" alt="" class="image"></div>
+</div>
+<div class="wf-section">
+    <div class="container-2 w-container">
+        <div class="text-block-2" >Tronald J.Dump <br></div>
+        <div class="text-block-2 label">@TronaldDump<br></div>
+    </div>
+    <div class="container-3 w-container">
+        <div class="div-block-2">
+            <div class="text-block-2 label label2">Visit the official Tronald J. Dump Twitter handle<br></div>
+            <a id="w-node-_0fed2ca8-244e-99fd-b9a6-f6f3c9c2f0b4-cb776680" href="https://twitter.com/realDonaldTrump" class=""link label">@TronaldDump</a>
+        </div>
+    </div>
+</div>
+   </div>
+    <button id="startTheProcess">Check out his daily nonsense</button>
+    <section id="weatherSection"></section>
+    <section id="newsSection"></section>
+    <section id="cocktailSection"></section>
+    <section id="TrumpSection"></section>
+
+
+    <script>
+        // references
+        let triggerButton = document.getElementById("startTheProcess")
+        let randomCocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
+        let newsSection = document.getElementById("newsSection")
+        let cocktailSection = document.getElementById("cocktailSection")
+        let TrumpSection = document.getElementById("TrumpSection")
+        let weatherSection = document.getElementById("weatherSection")
+        let dateSection = document.getElementById("dateSection")
+
+        let fetchDate = randomDate(new Date(1995, 6, 20), new Date())
+
+        let RandomTrumpBaseURL = "https://www.tronalddump.io/random/quote"
+
+        let weatherBaseURL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/"
+        let contentType = "history?"
+        let aggHrs = "&aggregateHours=24"
+        let startDT = "&startDateTime=" + fetchDate + "T00:00:00"
+        let endDT = "&endDateTime=" + fetchDate + "T00:00:00"
+        let unit = "&unitGroup=uk"
+        let format = "&contentType=json"
+        let weatherLocation = "&location=LosAngeles,CA,US"
+        let apiKey = "&key=F5S85MYAKSL47W6LW5J6FBAKL"
+
+        let newsURL = "https://gnews.io/api/v4/top-headlines?token=648c1bee7df2afa75c06f0f4da5160b4"
+        let lang = "en"
+        let country = "us"
+        let max = "1"
+        let from = fetchDate + "T00:00:00Z"
+        let to = fetchDate + "T23:59:59Z"
+    
+
+        // functions
+
+        function triggerHandler() {
+            generateNewDate()
+        }
+        
+        // fetchers
+        function fetchRandomCocktail() {
+            fetch(randomCocktailURL)
+                .then((response) => {
+                    return response.json()
+                })
+                .then((data) => {
+                    cocktailDataHandler(data)
+                })
+                .catch((serverError) => {
+                    console.error(serverError)
+                })
+        }
+
+        function fetchTrump() {
+            fetch(RandomTrumpBaseURL)
+                .then((response) => {
+                    return response.json()
+                })
+                .then((data) => {
+                    TrumpHandler(data)
+                })
+                .catch((serverError) => {
+                    console.error(serverError)
+                })
+        }
+
+        function fetchNews() {
+            let queryURL = newsURL + lang + country + max + from + to 
+            fetch(newsURL)
+                .then((response) => {
+                    return response.json()
+                })
+                .then((data) => {
+                    newsHandler(data)
+                })
+                .catch((serverError) => {
+                    console.error(serverError)
+                })
+        }
+
+        function fetchWeatherData(){
+            let queryURL = weatherBaseURL + contentType + aggHrs + startDT + endDT + unit + format + weatherLocation + apiKey
+            fetch(queryURL)
+                .then((response) => {
+                    return response.json()
+                })
+                .then((data) => {
+                    weatherDataHandler(data)
+                })
+                .catch((serverError) => {
+                    console.error(serverError)
+                })
+                fetchNews()
+                fetchRandomCocktail()
+                fetchTrump()
+        }
+
+        // handlers
+        function cocktailDataHandler(cocktailData) {
+            while (cocktailSection.firstChild) {
+                cocktailSection.removeChild(cocktailSection.firstChild)
+            }
+
+            let intro = document.createElement('h3')
+            intro.innerText = " I went to my business and ordered " + getRandomIntInclusive(1, 10) + " cups of " + cocktailData.drinks[0].strDrink
+            cocktailSection.appendChild(intro)
+
+            let thumb = cocktailData.drinks[0].strDrinkThumb
+
+            let thumbContainer = document.createElement('img')
+            thumbContainer.src = thumb
+            thumbContainer.alt = name
+            cocktailSection.appendChild(thumbContainer)
+
+            let picContainer = document.createElement('h3')
+            picContainer.innerText = "Yes I took a picture of it... So good. They are soo good."
+            cocktailSection.appendChild(picContainer)
+            
+        }
+
+        function TrumpHandler(TrumpData){
+            while (TrumpSection.firstChild) {
+                TrumpSection.removeChild(TrumpSection.firstChild)
+            }
+
+            let texts = TrumpData.value
+
+            let intro = document.createElement('h3')
+            intro.innerText = "I don't think I'm drunk yet, at least I came up with a smart idea： "
+            TrumpSection.appendChild(intro)
+            
+            let nameContainer = document.createElement('h3')
+            nameContainer.innerText = texts
+            TrumpSection.appendChild(nameContainer)
+        }
+
+        function newsHandler(newsData){
+            while (newsSection.firstChild) {
+                newsSection.removeChild(newsSection.firstChild)
+            }
+
+            let texts = newsData.title
+            console.info(texts)
+
+            let nameContainer = document.createElement('h3')
+            nameContainer.innerText = "Today, the dishonest media reports that " + texts
+            newsSection.appendChild(nameContainer)
+
+            let media = document.createElement('h3')
+            media.innerText = "Stupid media! They don't know anything."
+            newsSection.appendChild(media)
+        }
+            
+        function weatherDataHandler(weatherData){
+            while (weatherSection.firstChild) {
+                weatherSection.removeChild(weatherSection.firstChild)
+            }
+
+            let weatherType = weatherData.locations['LosAngeles,CA,US'].values[0].weathertype
+            let conditions = weatherData.locations['LosAngeles,CA,US'].values[0].conditions
+
+            let connection = ""
+            if(weatherType && conditions){
+                connection = " and "
+            }
+            console.info(weatherType)
+            console.info(conditions)
+
+            let intro = document.createElement('h2')
+            intro.innerText = fetchDate + "  |     Weather: " + weatherType + conditions
+            weatherSection.appendChild(intro)
+
+        }
+
+        //helper functions
+        function randomDate(start, end) {
+            var d = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+
+            return [year, month, day].join('-');
+        }
+
+        function generateNewDate(){
+            fetchDate = randomDate(new Date(1995, 6, 20), new Date())
+            //for the weather
+            startDT = "&startDateTime=" + fetchDate + "T00:00:00"
+            endDT = "&endDateTime=" + fetchDate + "T00:00:00"
+            fetchWeatherData()
+        }
+
+        function getRandomIntInclusive(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+}
+
+        // events
+        triggerButton.addEventListener('click', triggerHandler)
+    </script>
+</body>
+
+</html>
